@@ -2,7 +2,9 @@
   <fieldset
     class="fieldset w-xs bg-base-200 border border-base-300 p-4 rounded-box"
   >
-    <legend class="fieldset-legend text-lg">TanStack Form with Vue & Zod</legend>
+    <legend class="fieldset-legend text-lg">
+      TanStack Form with Vue & Zod
+    </legend>
     <form @submit.prevent="handleSubmit">
       <div class="flex flex-col mb-4">
         <form.Field
@@ -132,11 +134,9 @@
 
 <script setup lang="ts">
 import { useForm } from "@tanstack/vue-form";
-import { z } from "zod";
 import FieldError from "./FieldError.vue";
-import { computed, watch, onMounted } from "vue";
+import { watch, onMounted } from "vue";
 import { formSchema, type FormValues } from "../schemas/form-schema";
-import { zodValidator } from "@tanstack/zod-form-adapter";
 
 /**
  * Initializes the form using TanStack Form's useForm hook.
@@ -152,7 +152,6 @@ const form = useForm<FormValues>({
     acceptTerms: false,
     favoriteColor: "",
   },
-  validatorAdapter: zodValidator(formSchema),
   onSubmit: async ({ value }) => {
     console.log("Submitted:", value);
     alert("Form submitted! Check the console.");
@@ -161,7 +160,7 @@ const form = useForm<FormValues>({
 
 // Add this after form initialization
 onMounted(async () => {
-  await form.validate();
+  await form.validate("mount");
 
   // Validate all fields on mount
   console.log("Form State:", form.state);
