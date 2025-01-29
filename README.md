@@ -2,6 +2,8 @@
 
 How To Do Forms in Vue with Tanstack Form
 
+- Youtube Video - https://www.youtube.com/watch?v=cdcb-BXWUsc
+
 Quickly integrate form validation in your vuejs or nuxt js application using tanstack form
 
 - Quick walkthrough of simple project showing
